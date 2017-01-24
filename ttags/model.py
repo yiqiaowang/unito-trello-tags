@@ -1,5 +1,5 @@
 """
-Main class for manipulating trello labels.
+Main class for interfacing with trello api.
 """
 import requests
 
