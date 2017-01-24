@@ -28,7 +28,6 @@ class AppTest(unittest.TestCase):
             ]
         }]
 
-
     def test_parse_boards_json(self):
         boards = [
             {
@@ -40,10 +39,10 @@ class AppTest(unittest.TestCase):
                         'name': 'list1',
                         'id': 'id100',
                         'desc': 'asdf'
-                        }
-                    ]
-                }
-            ]
+                    }
+                ]
+            }
+        ]
         parsed = app.TrelloApp.parse_boards_json(boards)
 
         expected = [
@@ -54,14 +53,12 @@ class AppTest(unittest.TestCase):
                     {
                         'name': 'list1',
                         'id': 'id100'
-                        }
+                    }
                 ]
             }
         ]
 
         self.assertTrue(parsed == expected)
-
-
 
     def test_extract_lists(self):
         board = {
@@ -69,9 +66,8 @@ class AppTest(unittest.TestCase):
             'lists': [
                 {
                     'name': 'list1',
-                    'id' : 'id1'
-                }
-                ,
+                    'id': 'id1'
+                },
                 {
                     'name': 'list2',
                     'id': 'id2'
@@ -92,9 +88,7 @@ class AppTest(unittest.TestCase):
             }
         ]
 
-
         self.assertTrue(expected == extracted)
-
 
     def test_extract_cards(self):
         arr_of_cards = [
@@ -103,11 +97,10 @@ class AppTest(unittest.TestCase):
              'labels': [{
                  'name': 'label1',
                  'id': 'idlabel1'
-                 }],
+             }],
              'details': 'bla bla'
-            }
+             }
         ]
-
 
         extracted = app.TrelloApp.extract_cards(arr_of_cards)
         expected = [
@@ -116,12 +109,11 @@ class AppTest(unittest.TestCase):
              'labels': [{
                  'name': 'label1',
                  'id': 'idlabel1'
-                 }]
+             }]
              }
-            ]
+        ]
 
         self.assertTrue(extracted == expected)
-
 
     def test_prepare_labels(self):
         prep_cards = self.App.prepare_labels(self.App.Cards)

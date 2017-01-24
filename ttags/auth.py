@@ -14,6 +14,8 @@ TRELLO_URL = {
     'authorize': 'https://trello.com/1/OAuthAuthorizeToken',
     'access': 'https://trello.com/1/OAuthGetAccessToken'
 }
+
+
 def construct_params(port):
     TRELLO_AUTH_PARAMS = {
         'name': 'TTags',
@@ -24,6 +26,7 @@ def construct_params(port):
     }
     return TRELLO_AUTH_PARAMS
 
+
 def get_credentials(path):
     """
     Get client credentials for Trello OAuth authorization.
@@ -32,7 +35,8 @@ def get_credentials(path):
         data = json.load(json_data)
     return data
 
-def accept_request(handler,port):
+
+def accept_request(handler, port):
     """Starts up a http server at localhost:[port] and listens for the OAuth redirect."""
     print('Awaiting OAuth redirect on localhost:{}'.format(port))
     http_server = server.HTTPServer(('localhost', port), handler)
@@ -62,7 +66,7 @@ def authorize(port):
 
     # startup server to listen to response
     Handler = server.RequestHandler
-    accept_request(Handler,port)
+    accept_request(Handler, port)
     oauth_response = oauth.parse_authorization_response(Handler.fragment)
     verifier = oauth_response.get('oauth_verifier')
 

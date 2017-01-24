@@ -100,7 +100,6 @@ class TrelloApp:
                 else:
                     name_label_map[label.get('name')].append(label_tuple)
 
-
         return (label_card_map, name_label_map)
 
     def get_similar_simple(self, label_names):
@@ -114,7 +113,8 @@ class TrelloApp:
         while len(label_names) > 0:
             seed = choice(label_names)
             # get close matches, must be unique
-            similar_names = list(set(get_close_matches(seed, label_names, cutoff=0.4)))
+            similar_names = list(
+                set(get_close_matches(seed, label_names, cutoff=0.4)))
             # add the seed to the close matches, add to label groups
             label_groups.append(similar_names)
             # Remove those names from the pool
@@ -148,7 +148,6 @@ class TrelloApp:
         label_groups = [group for group in label_groups if len(group) > 1]
 
         return label_groups
-
 
     def suggest_similar(self):
         """
@@ -199,7 +198,7 @@ class TrelloApp:
                 # Just pick the first one for now.
                 if len(label_tuple_candidates) > 1:
                     print("Multiple labels found. Picking the first one.")
-                
+
                 label_tuple_candidates = label_tuple_candidates[0]
                 # Get the (name, id) tuple from the name -> tuple dict
                 # This gives us the id of the Label that will do the replacing
@@ -219,7 +218,8 @@ class TrelloApp:
                         replaced_id = replaced_label[1]
 
                         # Replace all the cards that have said label.
-                        # That is, all the cards found in the tuple -> card dict.
+                        # That is, all the cards found in the tuple -> card
+                        # dict.
                         for card in label_card_map[replaced_label]:
                             card_id = card.get('id')
                             self.dirty = True
@@ -228,7 +228,6 @@ class TrelloApp:
             else:
                 print("Not replacing, moving on.")
 
-
     def initialize(self):
         """Pull user's data from trello and process them for later use."""
         if self.authenticated:
@@ -236,7 +235,7 @@ class TrelloApp:
             self.Boards = list()
             self.Cards = list()
             self.Lists = list()
-            
+
             # Retrive all the boards of the user
             self.Boards = json.loads(self.tool.get_boards().content.decode())
 
@@ -247,7 +246,8 @@ class TrelloApp:
             # for each list, extract the information on their cards
             for _list in self.Lists:
                 _list_id = _list.get('id')
-                list_json = json.loads(self.tool.get_list(_list_id).content.decode())
+                list_json = json.loads(
+                    self.tool.get_list(_list_id).content.decode())
                 cards_list = self.extract_cards(list_json)
                 self.Cards += cards_list
 

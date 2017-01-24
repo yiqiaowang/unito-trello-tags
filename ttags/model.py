@@ -16,7 +16,6 @@ class TrelloTool:
         self.key = credentials.get('key')
         self.token = credentials.get('token')
 
-
     def get_boards(self):
         """ Get information on boards and their lists. """
         parameters = {
@@ -31,7 +30,6 @@ class TrelloTool:
             params=parameters)
 
         return req
-
 
     def get_list(self, list_id):
         """ Get detailed information on a list, including cards and their labels. """
