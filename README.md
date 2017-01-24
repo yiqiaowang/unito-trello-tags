@@ -32,7 +32,6 @@ To view similar labels, login with ``` login ``` and ask for similar labels with
 #### Issues to know about
 1. If there are multiple labels with the same name, you are not able to pick which of the two you intend to use when merging similar labels. It is possible to differentiate by prompting the user to pick between the two different label IDs. When this case arrises, a warning is given.
 2. I've included the client keys and secret for a throwaway Trello account. All testing was done on this account.
-3. Performance could be improved. Merging took a few seconds when testing, however this may be my network's fault.
 #### Running the tests
 Be in the project root and test with:
 ```
