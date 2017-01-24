@@ -1,0 +1,5 @@
+oauthlib==2.0.1
+requests==2.12.5
+requests-oauthlib==0.7.0
+fuzzywuzzy==0.14.0
+python-Levenshtein==0.12.0
