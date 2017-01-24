@@ -1,3 +1,7 @@
+"""
+Class that contains the main application functionality. 
+"""
+
 import auth
 import model
 import json
